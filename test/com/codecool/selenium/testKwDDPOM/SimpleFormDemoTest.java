@@ -14,7 +14,6 @@ public class SimpleFormDemoTest {
     public void setup() {
         keyWords.iniFireFoxDriver();
         keyWords.setUrl(elementsLib.baseURL);
-
     }
 
     @Test
@@ -37,8 +36,8 @@ public class SimpleFormDemoTest {
         }
     }
 
-//    @AfterEach
-//    public void tearDown() {
-//        keyWords.closeDriver();
-//    }
+    @AfterEach
+    public void tearDown() {
+        keyWords.closeDriver();
+    }
 }
