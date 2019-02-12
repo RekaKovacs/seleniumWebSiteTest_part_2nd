@@ -31,6 +31,7 @@ public class DataHandling {
     }
 
     public List<String> getListSingleInputFieldMessages() {
+        getDataFromExcelFile();
         return listSingleInputFieldMessages;
     }
 }

@@ -33,6 +33,7 @@ public class KeyWords {
     }
 
     public void sendKeys(By inputField, String message) {
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(inputField)).clear();
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(inputField)).sendKeys(message);
     }
 

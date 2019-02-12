@@ -26,8 +26,19 @@ public class SimpleFormDemoTest {
         assertEquals(elementsLib.textForInputField, keyWords.getInnerText(elementsLib.locationTypedText));
     }
 
-    @AfterEach
-    public void tearDown() {
-        keyWords.closeDriver();
+    @Test
+    public void fillInputFieldWithMessagesFromExcel() {
+        keyWords.clickElement(elementsLib.selectInputFormsMenuList);
+        keyWords.clickElement(elementsLib.selectSimpleFormDemoMenuList);
+        for (int i = 0; i < elementsLib.listSingleInputFieldMessages.size(); i++) {
+                keyWords.sendKeys(elementsLib.inputSingleInputField, elementsLib.listSingleInputFieldMessages.get(i));
+                keyWords.clickElement(elementsLib.buttonShowMessage);
+                assertEquals(elementsLib.listSingleInputFieldMessages.get(i), keyWords.getInnerText(elementsLib.locationTypedText));
+        }
     }
+
+//    @AfterEach
+//    public void tearDown() {
+//        keyWords.closeDriver();
+//    }
 }
