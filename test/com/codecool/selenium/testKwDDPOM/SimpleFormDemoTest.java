@@ -1,7 +1,5 @@
 package com.codecool.selenium.testKwDDPOM;
 
-import com.codecool.selenium.testKwDDPOM.KeyWords;
-import com.codecool.selenium.testKwDDPOM.ElementsLib;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
