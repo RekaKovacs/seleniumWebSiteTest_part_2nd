@@ -64,6 +64,50 @@ public class CheckBox {
         if (!assertionErrorList.isEmpty()) {throw new AssertionError();}
     }
 
+    @Test
+    public void checkedMultipleCheckBoxWithVariationFromExcel() {
+        List<String> listOfVariationMultipleCheckBox = elementsLib.listOfVariationMultipleCheckBox;
+        List<AssertionError> assertionErrorList = new ArrayList<>();
+        keyWords.clickElement(elementsLib.selectInputFormsMenuList);
+        keyWords.clickElement(elementsLib.selectCheckBoxDemoMenuList);
+
+        for (int i = 0; i < listOfVariationMultipleCheckBox.size(); i+=4) {
+            int counter = 0;
+
+            if (listOfVariationMultipleCheckBox.get(i).equals("1")) {
+                keyWords.clickElement(elementsLib.option1CheckBox);
+                counter++;
+            }
+            if  (listOfVariationMultipleCheckBox.get(i+1).equals("1")) {
+                keyWords.clickElement(elementsLib.option2CheckBox);
+                counter++;
+            }
+            if  (listOfVariationMultipleCheckBox.get(i+2).equals("1")) {
+                keyWords.clickElement(elementsLib.option3CheckBox);
+                counter++;
+            }
+            if  (listOfVariationMultipleCheckBox.get(i+3).equals("1")) {
+                keyWords.clickElement(elementsLib.option4CheckBox);
+                counter++;
+            }
+
+            try {
+                if (counter == 4) {
+                    assertEquals("Uncheck All", keyWords.getValueAttribute(elementsLib.buttonCheckUncheckAll));
+                    keyWords.clickElement(elementsLib.buttonCheckUncheckAll);
+                } else {
+                    assertEquals("Check All", keyWords.getValueAttribute(elementsLib.buttonCheckUncheckAll));
+                    keyWords.clickElement(elementsLib.buttonCheckUncheckAll);
+                    keyWords.clickElement(elementsLib.buttonCheckUncheckAll);
+                }
+
+            } catch (AssertionError error) {
+                assertionErrorList.add(error);
+            }
+        }
+        if (!assertionErrorList.isEmpty()) {throw new AssertionError();}
+    }
+
 
 
 

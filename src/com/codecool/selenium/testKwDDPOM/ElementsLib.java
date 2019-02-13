@@ -20,6 +20,8 @@ class ElementsLib {
 
     String expectedMessagesingleCheckBox = "Success - Check box is checked";
 
+    List<String> listOfVariationMultipleCheckBox = dataHandling.getListOfVariationMultipleCheckBox();
+
 
     By selectInputFormsMenuList = By.xpath("//*[@id=\"treemenu\"]//*[contains(text(),'Input Forms')]");
     By selectSimpleFormDemoMenuList = By.xpath("//*[@id=\"treemenu\"]//*[contains(text(),'Simple Form Demo')]");

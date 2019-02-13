@@ -58,7 +58,6 @@ public class DataHandling {
                 listForNumbers.add(cellValue);
             }
         }
-
         return listForNumbers;
     }
 
@@ -75,5 +74,18 @@ public class DataHandling {
     public List<String> getListTwoInputFieldsTotal() {
         Short twoFieldCellTotal  = 3;
         return getListTwoInputFieldsNumbersFromExcel(twoFieldCellTotal);
+    }
+
+    public List<String> getListOfVariationMultipleCheckBox() {
+        getDataFromExcelFile();
+        List<String> listOfVariationMultipleCheckBox = new ArrayList<>();
+        Short cellStartNumber = 4;
+
+        for (int i = 1; i < sheet.getPhysicalNumberOfRows(); i++) {
+            for (int j = cellStartNumber; j < cellStartNumber+4; j++) {
+                listOfVariationMultipleCheckBox.add((String.valueOf((int)sheet.getRow(i).getCell((short)j).getNumericCellValue())));
+            }
+        }
+        return listOfVariationMultipleCheckBox;
     }
 }
