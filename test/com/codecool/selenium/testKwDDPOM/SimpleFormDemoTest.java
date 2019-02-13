@@ -1,14 +1,12 @@
 package com.codecool.selenium.testKwDDPOM;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SimpleFormDemoTest {
@@ -57,9 +55,9 @@ public class SimpleFormDemoTest {
     Third exercise - Two fields & Output:
         Navigate to Simpe Form Demo. In "Two Input Fields" enter value A and B and click the "Get Total" button. Validate that the
         answer is correct.
-        Does your test works even when you enter very large numbers? !!!No!!!
+        !!! Does your test works even when you enter very large numbers? !!!No!!!
         Extension: use at least 5 rows from data source with expected results, make positive and negative tests
-         Method can not handle this case (1, a, expected 1a -failing test)
+        !!! Method can not handle this case (1, a, expected 1a -failing test)
      */
     @Test
     public void fillTwoInputFieldsWithNumber() {

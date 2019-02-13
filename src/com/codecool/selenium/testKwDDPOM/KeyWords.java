@@ -40,4 +40,8 @@ public class KeyWords {
     public String getInnerText(By locationOfInnerText) {
         return webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locationOfInnerText)).getText();
     }
+
+    public String getValueAttribute(By locationOfValue) {
+        return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locationOfValue)).getAttribute("value");
+    }
 }
