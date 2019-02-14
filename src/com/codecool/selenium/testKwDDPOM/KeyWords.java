@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class KeyWords {
@@ -43,5 +44,10 @@ public class KeyWords {
 
     public String getValueAttribute(By locationOfValue) {
         return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locationOfValue)).getAttribute("value");
+    }
+
+    public void selectDropDownByValue (By locationOfDropdown, String dayOfWeek) {
+        Select select = new Select(webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locationOfDropdown)));
+        select.selectByValue(dayOfWeek);
     }
 }

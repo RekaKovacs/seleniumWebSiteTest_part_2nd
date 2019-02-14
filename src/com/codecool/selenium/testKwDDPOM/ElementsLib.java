@@ -2,8 +2,12 @@ package com.codecool.selenium.testKwDDPOM;
 
 import org.openqa.selenium.By;
 
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 class ElementsLib {
     String baseURL = "https://www.seleniumeasy.com/test/";
@@ -21,6 +25,10 @@ class ElementsLib {
     String expectedMessagesingleCheckBox = "Success - Check box is checked";
 
     List<String> listOfVariationMultipleCheckBox = dataHandling.getListOfVariationMultipleCheckBox();
+
+    String dayOfWeek = getDayOfWeek();
+    String expectedDayOfWeek = "Day selected :- " + dayOfWeek;
+
 
 
     By selectInputFormsMenuList = By.xpath("//*[@id=\"treemenu\"]//*[contains(text(),'Input Forms')]");
@@ -44,7 +52,15 @@ class ElementsLib {
     By option4CheckBox = By.xpath("(//input[@value=''])[5]");
     By buttonCheckUncheckAll = By.xpath("//*[@id=\"check1\"]");
 
+    By selectDropDownList = By.xpath("//*[@id=\"treemenu\"]//*[contains(text(),'Select Dropdown List')]");
+    By dropDownSingleSelect = By.xpath("//*[@id=\"select-demo\"]");
+    By locationDropdownSelectedText = By.xpath("//*[@class=\"selected-value\"]");
 
+
+
+    private String getDayOfWeek() {
+        return new SimpleDateFormat("EEEE", Locale.ENGLISH).format(System.currentTimeMillis());
+    }
 
 
 
