@@ -28,6 +28,7 @@ class ElementsLib {
 
     String dayOfWeek = getDayOfWeek();
     String expectedDayOfWeek = "Day selected :- " + dayOfWeek;
+    List<String> listOfDaysFromExcel = dataHandling.getListOfDaysFromExcel();
 
 
 

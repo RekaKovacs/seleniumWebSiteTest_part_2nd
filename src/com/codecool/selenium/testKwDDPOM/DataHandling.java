@@ -88,4 +88,15 @@ public class DataHandling {
         }
         return listOfVariationMultipleCheckBox;
     }
+
+    public List<String> getListOfDaysFromExcel() {
+        getDataFromExcelFile();
+        List<String> listOfDays = new ArrayList<>();
+        Short cellNumber = 8;
+
+        for (int i = 1; i < sheet.getPhysicalNumberOfRows(); i++) {
+            listOfDays.add(sheet.getRow(i).getCell(cellNumber).getStringCellValue());
+        }
+        return listOfDays;
+    }
 }

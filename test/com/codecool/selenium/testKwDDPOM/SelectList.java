@@ -3,6 +3,9 @@ package com.codecool.selenium.testKwDDPOM;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SelectList {
@@ -28,12 +31,35 @@ public class SelectList {
         Extension: select each days after each other twice (14 in total), use keywords and data source obviously
      */
     @Test
-    public void checkedSingleCheckbox() {
+    public void checkedSingleCheckboxByCurrentDay() {
         keyWords.clickElement(elementsLib.selectInputFormsMenuList);
         keyWords.clickElement(elementsLib.selectDropDownList);
         keyWords.selectDropDownByValue(elementsLib.dropDownSingleSelect, elementsLib.dayOfWeek);
         assertEquals(elementsLib.expectedDayOfWeek, keyWords.getInnerText(elementsLib.locationDropdownSelectedText));
     }
+
+    @Test
+    public void checkedSingleCheckboxDataDriven() {
+        List<AssertionError> assertionErrorList = new ArrayList<>();
+        keyWords.clickElement(elementsLib.selectInputFormsMenuList);
+        keyWords.clickElement(elementsLib.selectDropDownList);
+
+        for (int i = 0; i < 2; i++) {
+            for (String day : elementsLib.listOfDaysFromExcel) {
+                keyWords.selectDropDownByValue(elementsLib.dropDownSingleSelect, day);
+                System.out.println(day+" - " + keyWords.getInnerText(elementsLib.locationDropdownSelectedText));
+                try {
+                    assertEquals("Day selected :- " + day, keyWords.getInnerText(elementsLib.locationDropdownSelectedText));
+                } catch (AssertionError error) {
+                    assertionErrorList.add(error);
+                }
+            }
+        }
+        if (!assertionErrorList.isEmpty()) {
+            throw new AssertionError();
+        }
+    }
+
 
 //    @AfterEach
 //    public void tearDown() {
