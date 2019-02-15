@@ -39,10 +39,7 @@ public class CheckBox {
         keyWords.clickElement(elementsLib.checkboxSingle);
         assertEquals(elementsLib.expectedMessagesingleCheckBox, keyWords.getInnerText(elementsLib.locationSingleCheckedMessage));
     }
-    /*
-    !!!!! Firefoxban a teszt szerint működik, manuálisan vizsgálva is ok,
-    de chromeban az oldalon 3 kijelölés után átvált "Uncheck All"-ra, majd a 4. jelölés után visszavált "Check All"-ra.
-     */
+
     @Test
     public void checkedMultipleCheckBox() {
         List<AssertionError> assertionErrorList = new ArrayList<>();

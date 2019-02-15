@@ -2,10 +2,15 @@ package com.codecool.selenium.testKwDDPOM;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class KeyWords {
     WebDriverWait webDriverWait;
@@ -49,5 +54,32 @@ public class KeyWords {
     public void selectDropDownByValue (By locationOfDropdown, String dayOfWeek) {
         Select select = new Select(webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locationOfDropdown)));
         select.selectByValue(dayOfWeek);
+    }
+
+    public Map<String, String> clickRdbAllCombination (By locationrdbSexGroupButtonsDemo, By locationrdbAgeGroupButtonDemo,
+                                        By buttonGetValue, By locationGetSexAndAgeGroupRdbText) {
+
+        List<WebElement> sexRdb = getListWebElement(locationrdbSexGroupButtonsDemo);
+        List <WebElement> ageGroupRdb = getListWebElement(locationrdbAgeGroupButtonDemo);
+        Map<String, String> textExpectedAndResult = new HashMap<>();
+
+        for (WebElement sexWebElement : sexRdb) {
+            for (WebElement ageGroupWebElement : ageGroupRdb) {
+                sexWebElement.click();
+                ageGroupWebElement.click();
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(buttonGetValue)).click();
+
+                String expected = "Sex : " + sexWebElement.getAttribute("value")+ "\n" +
+                        "Age group: " + ageGroupWebElement.getAttribute("value");
+
+                textExpectedAndResult.put(expected, webDriverWait.until(ExpectedConditions.
+                        presenceOfElementLocated(locationGetSexAndAgeGroupRdbText)).getText());
+            }
+        }
+        return textExpectedAndResult;
+    }
+
+    public List<WebElement> getListWebElement(By locationWebelement) {
+        return webDriverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locationWebelement));
     }
 }

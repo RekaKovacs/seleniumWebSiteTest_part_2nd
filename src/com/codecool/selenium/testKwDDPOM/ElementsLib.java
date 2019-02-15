@@ -31,7 +31,6 @@ class ElementsLib {
     List<String> listOfDaysFromExcel = dataHandling.getListOfDaysFromExcel();
 
 
-
     By selectInputFormsMenuList = By.xpath("//*[@id=\"treemenu\"]//*[contains(text(),'Input Forms')]");
     By selectSimpleFormDemoMenuList = By.xpath("//*[@id=\"treemenu\"]//*[contains(text(),'Simple Form Demo')]");
     By inputSingleInputField = By.xpath("//*[@id=\"user-message\"]");
@@ -57,12 +56,13 @@ class ElementsLib {
     By dropDownSingleSelect = By.xpath("//*[@id=\"select-demo\"]");
     By locationDropdownSelectedText = By.xpath("//*[@class=\"selected-value\"]");
 
-
+    By selectRadioButtonsDemoMenuList = By.xpath("//*[@id=\"treemenu\"]//*[contains(text(),'Radio Buttons Demo')]");
+    By rdbSexGroupButtonsDemo = By.xpath("//input[@name='gender']");
+    By rdbAgeGroupButtonDemo = By.xpath("//input[@name='ageGroup']");
+    By buttonRdbGetValues = By.xpath("(//button[@type='button'])[3]");
+    By locationGetSexAndAgeGroupRdbText = By.xpath("//*[@class=\"groupradiobutton\"]");
 
     private String getDayOfWeek() {
         return new SimpleDateFormat("EEEE", Locale.ENGLISH).format(System.currentTimeMillis());
     }
-
-
-
 }
