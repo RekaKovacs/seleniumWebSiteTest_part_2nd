@@ -11,18 +11,13 @@ import java.util.Locale;
 
 class ElementsLib {
     String baseURL = "https://www.seleniumeasy.com/test/";
-    String textForInputField = "Hello world!";
     DataHandling dataHandling = new DataHandling();
     List<String> listSingleInputFieldMessages = dataHandling.getListSingleInputFieldMessages();
 
-    String number1 = "10";
-    String number2 = "100";
-    String expectedTotal = "110";
+
     List<String> listTwoInputFieldsNumber1 = dataHandling.getListTwoInputFieldsNumber1();
     List<String> listTwoInputFieldsNumber2 = dataHandling.getListTwoInputFieldsNumber2();
     List<String> listTwoInputFieldsTotal = dataHandling.getListTwoInputFieldsTotal();
-
-    String expectedMessagesingleCheckBox = "Success - Check box is checked";
 
     List<String> listOfVariationMultipleCheckBox = dataHandling.getListOfVariationMultipleCheckBox();
 

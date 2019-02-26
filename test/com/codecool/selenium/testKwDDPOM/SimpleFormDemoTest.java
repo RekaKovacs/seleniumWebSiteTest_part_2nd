@@ -35,9 +35,9 @@ public class SimpleFormDemoTest {
     public void fillSingleInputFieldWithText() {
         keyWords.clickElement(elementsLib.selectInputFormsMenuList);
         keyWords.clickElement(elementsLib.selectSimpleFormDemoMenuList);
-        keyWords.sendKeys(elementsLib.inputSingleInputField, elementsLib.textForInputField);
+        keyWords.sendKeys(elementsLib.inputSingleInputField, "Hello world!");
         keyWords.clickElement(elementsLib.buttonShowMessage);
-        assertEquals(elementsLib.textForInputField, keyWords.getInnerText(elementsLib.locationTypedText));
+        assertEquals("Hello world!", keyWords.getInnerText(elementsLib.locationTypedText));
     }
 
     @Test
@@ -61,20 +61,22 @@ public class SimpleFormDemoTest {
      */
     @Test
     public void fillTwoInputFieldsWithNumber() {
+
         keyWords.clickElement(elementsLib.selectInputFormsMenuList);
         keyWords.clickElement(elementsLib.selectSimpleFormDemoMenuList);
-        keyWords.sendKeys(elementsLib.inputTwoInputFields1, elementsLib.number1);
-        keyWords.sendKeys(elementsLib.inputTwoInputFields2, elementsLib.number2);
+        keyWords.sendKeys(elementsLib.inputTwoInputFields1, "10");
+        keyWords.sendKeys(elementsLib.inputTwoInputFields2, "100");
         keyWords.clickElement(elementsLib.buttonGetTotal);
-        assertEquals(elementsLib.expectedTotal, keyWords.getInnerText(elementsLib.locationGetTotalAmount));
+        assertEquals("110", keyWords.getInnerText(elementsLib.locationGetTotalAmount));
     }
 
     @Test
     public void fillTwoInputFieldsWithNumbersFromExcel() {
         List<String> listResult = new ArrayList<>();
         List<AssertionError> assertionErrorList = new ArrayList<>();
+        int numberOfRows = 5;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < numberOfRows; i++) {
             keyWords.clickElement(elementsLib.selectInputFormsMenuList);
             keyWords.clickElement(elementsLib.selectSimpleFormDemoMenuList);
             keyWords.sendKeys(elementsLib.inputTwoInputFields1, elementsLib.listTwoInputFieldsNumber1.get(i));

@@ -3,10 +3,8 @@ package com.codecool.selenium.testKwDDPOM;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,23 +29,41 @@ public class RadioButton {
         Validate the result.
         Try to run several combinations in one test.
         Extension: create and validate all possible combinations once, use data source and keywords  !!! not implemented yet!!!
+        Group Sex:
+        0 = Male, 1 = Female
+        Age group:
+        0 = 0 to 5, 1 = 5 to 15, 2 = 15 to 50
+
      */
     @Test
-    public void groupRadioButtonOneCombinationTest() {
+    public void groupRadioButtonSeveralCombinationTest() {
         List<AssertionError> assertionErrorList = new ArrayList<>();
+
+        Integer[] comb1 = {0,2};
+        Integer[] comb2 = {1,0};
+        Integer[] comb3 = {1,1};
+        List<Integer[]> combinations = new ArrayList<>();
+            combinations.add(comb1);
+            combinations.add(comb2);
+            combinations.add(comb3);
+
+        List<String> listExpectedText = new ArrayList<>();
+        listExpectedText.add("Sex : Male\nAge group: 15 - 50");
+        listExpectedText.add("Sex : Female\nAge group: 0 - 5");
+        listExpectedText.add("Sex : Female\nAge group: 5 - 15");
 
         keyWords.clickElement(elementsLib.selectInputFormsMenuList);
         keyWords.clickElement(elementsLib.selectRadioButtonsDemoMenuList);
-        Map<String,String> textExpectedResult = keyWords.clickRdbAllCombination(elementsLib.rdbSexGroupButtonsDemo,
+        List<String> textResult = keyWords.clickRdbSeveralCombination(combinations, elementsLib.rdbSexGroupButtonsDemo,
                 elementsLib.rdbAgeGroupButtonDemo, elementsLib.buttonRdbGetValues, elementsLib.locationGetSexAndAgeGroupRdbText);
 
-        textExpectedResult.forEach((expected, result)->{
+        for (int i = 0; i < listExpectedText.size(); i++) {
             try {
-                assertEquals(expected, result);
+                assertEquals(listExpectedText.get(i), textResult.get(i));
             } catch (AssertionError error) {
                 assertionErrorList.add(error);
             }
-        });
+        }
 
         if (!assertionErrorList.isEmpty()) {
             throw new AssertionError();

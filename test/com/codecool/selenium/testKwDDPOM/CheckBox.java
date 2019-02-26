@@ -37,7 +37,7 @@ public class CheckBox {
         keyWords.clickElement(elementsLib.selectInputFormsMenuList);
         keyWords.clickElement(elementsLib.selectCheckBoxDemoMenuList);
         keyWords.clickElement(elementsLib.checkboxSingle);
-        assertEquals(elementsLib.expectedMessagesingleCheckBox, keyWords.getInnerText(elementsLib.locationSingleCheckedMessage));
+        assertEquals("Success - Check box is checked", keyWords.getInnerText(elementsLib.locationSingleCheckedMessage));
     }
 
     @Test
@@ -108,8 +108,8 @@ public class CheckBox {
 
 
 
-//    @AfterEach
-//    public void tearDown() {
-//        keyWords.closeDriver();
-//    }
+    @AfterEach
+    public void tearDown() {
+        keyWords.closeDriver();
+    }
 }

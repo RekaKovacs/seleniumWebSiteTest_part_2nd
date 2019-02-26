@@ -1,5 +1,6 @@
 package com.codecool.selenium.testKwDDPOM;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -60,9 +61,8 @@ public class SelectList {
         }
     }
 
-
-//    @AfterEach
-//    public void tearDown() {
-//        keyWords.closeDriver();
-//    }
+    @AfterEach
+    public void tearDown() {
+        keyWords.closeDriver();
+    }
 }
